@@ -32,7 +32,7 @@ steps:
         --org $(System.TeamFoundationCollectionUri) \
         --project "Agile Test Project" \
         --assigned-to "pimathieu@microsoft.com" \
-        --fields "DevApproovalTask=value-to-approve"
+        --fields "DevApprovalTask=value-to-approve"
   env: 
       AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
   displayName: 'Create work item For validation'
