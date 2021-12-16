@@ -27,10 +27,11 @@ steps:
     targetType: 'inline'
     script: |
       az boards work-item create \
-        --title "Build $(build.buildNumber) validation" \
+        --title "Developer Validation for $(build.buildNumber)" \
         --type task \
         --org $(System.TeamFoundationCollectionUri) \
         --project $(System.TeamProject)
+        --assigned-to pimathieu@microsoft.com
   env: 
       AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
-  displayName: 'Create work item on failure'
+  displayName: 'Create work item For validation'
