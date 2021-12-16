@@ -30,7 +30,7 @@ steps:
         --title "Developer Validation for $(build.buildNumber)" \
         --type task \
         --org $(System.TeamFoundationCollectionUri) \
-        --project $(System.TeamProject) \
+        --project "Agile Test Project" \
         --assigned-to "pimathieu@microsoft.com" \
         --fields "DevApproovalTask=value-to-approve"
   env: 
