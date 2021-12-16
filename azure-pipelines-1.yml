@@ -15,3 +15,17 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      az boards work-item create \
+        --title "Developer Validation for $(build.buildNumber)" \
+        --type task \
+        --org $(System.TeamFoundationCollectionUri) \
+        --project "Agile Test Project" \
+        --assigned-to "pimathieu@microsoft.com" \
+        --fields "DevApprovalTask=value-to-approve"
+  env: 
+      AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+  displayName: 'Create work item For validation'
