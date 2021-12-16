@@ -22,3 +22,15 @@ steps:
       # Write your PowerShell commands here.
       
       Write-Host "Hello World"
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      az boards work-item create \
+        --title "Build $(build.buildNumber) validation" \
+        --type task \
+        --org $(System.TeamFoundationCollectionUri) \
+        --project $(System.TeamProject)
+    env: 
+      AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
+    displayName: 'Create work item on failure'
