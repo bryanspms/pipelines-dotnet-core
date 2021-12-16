@@ -32,7 +32,7 @@ steps:
         --org $(System.TeamFoundationCollectionUri) \
         --project $(System.TeamProject) \
         --assigned-to "pimathieu@microsoft.com" \
-        --fields "custom-field1=value1" "custom-field2=value2"
+        --fields "DevApproovalTask=value-to-approve"
   env: 
       AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
   displayName: 'Create work item For validation'
